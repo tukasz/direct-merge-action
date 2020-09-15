@@ -4,7 +4,6 @@ import { OctokitResponse, ReposMergeResponseData } from '@octokit/types';
 
 async function merge(): Promise<void> {
   const GITHUB_TOKEN = getInput('GITHUB_TOKEN');
-  const GITHUB_LOGIN = getInput('GITHUB_LOGIN');
   const owner = getInput('owner');
   const repo = getInput('repo');
   const head = getInput('source-branch');
@@ -12,7 +11,7 @@ async function merge(): Promise<void> {
   const octokit = getOctokit(GITHUB_TOKEN);
 
   info(
-    `Running direct GitHub merge of ${owner}/${repo} ${head} -> ${base} as: ${GITHUB_LOGIN}`
+    `Running direct GitHub merge of ${owner}/${repo} ${head} -> ${base}`
   );
 
   const res: OctokitResponse<ReposMergeResponseData> = await octokit.repos.merge({

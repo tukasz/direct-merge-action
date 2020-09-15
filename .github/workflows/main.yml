@@ -5,12 +5,30 @@ on:
     branches: [master]
 
 jobs:
-  run_action:
+  CI_build:
     runs-on: ubuntu-latest
-    name: Merge master -> develop
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Merge action
+      - name: Checkout latest code
+        uses: actions/checkout@v2
+
+      - name: 'Automated Version Bump'
+        uses: 'phips28/gh-action-bump-version@master'
+        with:
+          tag-prefix: 'deploy-'
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build source code
+        run: npm run build
+
+      - name: Merge master -> develop
         uses: tukasz/direct-merge-action@master
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
