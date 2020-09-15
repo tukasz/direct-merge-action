@@ -3,6 +3,8 @@ name: Test of the GitHub action
 on:
   pull_request:
     branches: [master]
+  push:
+    branches: [master]
 
 jobs:
   run_action:
