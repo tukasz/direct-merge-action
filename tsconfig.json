@@ -1,7 +1,4 @@
 {
-  "compilerOptions": {
-    "target": "ES2018",
-    "moduleResolution": "node"
-  },
-  "files": ["./src/index.ts"]
+  "extends": "./tsconfig.base.json",
+  "exclude": ["src/**/*.spec.ts"]
 }
