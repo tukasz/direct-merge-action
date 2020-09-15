@@ -1,5 +1,10 @@
 name: 'Direct merge'
+
 description: 'GitHub action which merges one branch into another'
+
+branding:
+  color: 'green'
+  icon: 'git-merge'
 
 inputs:
   owner: # owner of the repo
