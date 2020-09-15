@@ -1,0 +1,27 @@
+name: 'Direct merge'
+description: 'GitHub action which merges one branch into another'
+
+inputs:
+  owner: # owner of the repo
+    description: 'Owner of the repo'
+    required: true
+
+  repo: # name of the repo
+    description: 'Name of the repo'
+    required: true
+
+  source-branch: # name of source branch
+    description: 'Name of the source branch (from)'
+    required: true
+
+  target-branch: # name of target branch
+    description: 'Name of the target branch (to)'
+    required: true
+
+  github-token:
+    description: 'Pass in secrets.GITHUB_TOKEN'
+    required: true
+    
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

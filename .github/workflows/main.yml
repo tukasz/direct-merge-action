@@ -1,0 +1,20 @@
+name: Test of the GitHub action
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  run_action:
+    runs-on: ubuntu-latest
+    name: A test of the GitHub action
+    steps:
+      - uses: actions/checkout@v2
+      - name: Merge action
+        uses: tukasz/direct-merge-action@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          owner: tukasz
+          repo: direct-merge-action
+          source-branch: master
+          target-branch: develop
