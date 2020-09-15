@@ -1,15 +1,13 @@
-name: Test of the GitHub action
+name: Master push
 
 on:
-  pull_request:
-    branches: [master]
   push:
     branches: [master]
 
 jobs:
   run_action:
     runs-on: ubuntu-latest
-    name: A test of the GitHub action
+    name: Merge master -> develop
     steps:
       - uses: actions/checkout@v2
       - name: Merge action
