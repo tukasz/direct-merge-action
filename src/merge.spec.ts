@@ -5,7 +5,7 @@ describe('run', () => {
   it('should log an info with parameter details', () => {
     run();
 
-    expect(loggerMock.info).toHaveBeenCalledWith('Running direct GitHub merge of __owner__/__repo__ __source-branch__ -> __target-branch__ as: __GITHUB_LOGIN__');
+    expect(loggerMock.info).toHaveBeenCalledWith('Running direct GitHub merge of __owner__/__repo__ __source-branch__ -> __target-branch__');
   });
 
   it('should send a merge request', () => {
