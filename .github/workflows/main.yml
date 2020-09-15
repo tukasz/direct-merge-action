@@ -23,6 +23,15 @@ jobs:
       - name: Build source code
         run: npm run build
 
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./coverage/
+          flags: unittests
+          name: codecov-umbrella
+          path_to_write_report: ./coverage/codecov_report.gz
+
       - name: 'Automated Version Bump'
         uses: 'phips28/gh-action-bump-version@master'
         with:
