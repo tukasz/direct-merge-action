@@ -18,10 +18,10 @@ inputs:
     description: 'Name of the target branch (to)'
     required: true
 
-  github-token:
+  GITHUB_TOKEN:
     description: 'Pass in secrets.GITHUB_TOKEN'
     required: true
-    
+
 runs:
   using: 'node12'
   main: 'dist/index.js'
