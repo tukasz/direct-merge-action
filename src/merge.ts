@@ -4,11 +4,19 @@ import { OctokitResponse, ReposMergeResponseData } from '@octokit/types';
 
 async function merge(): Promise<void> {
   const GITHUB_TOKEN = getInput('GITHUB_TOKEN');
-  const owner = getInput('owner');
-  const repo = getInput('repo');
+  const owner = getInput('owner') || (process.env.GITHUB_REPOSITORY || '').split('/')[0];
+  const repo = getInput('repo') || (process.env.GITHUB_REPOSITORY || '').split('/')[1];
   const head = getInput('source-branch');
   const base = getInput('target-branch');
   const octokit = getOctokit(GITHUB_TOKEN);
+
+  if (!owner) {
+    return setFailed(`Owner of the repository was not specified and could not be derived from GITHUB_REPOSITORY env variable (${process.env.GITHUB_REPOSITORY})`)
+  }
+
+  if (!repo) {
+    return setFailed(`Repository name was not specified and could not be derived from GITHUB_REPOSITORY env variable (${process.env.GITHUB_REPOSITORY})`)
+  }
 
   info(
     `Running direct GitHub merge of ${owner}/${repo} ${head} -> ${base}`
@@ -19,7 +27,7 @@ async function merge(): Promise<void> {
     repo,
     base,
     head,
-    commit_message: `Automatic merge of ${head} -> ${base}`
+    commit_message: `Automatic merge of ${head} -> ${base}`,
   }) as OctokitResponse<ReposMergeResponseData>
 
   info(`Merged ${head} -> ${base} (${res.data.sha})`);

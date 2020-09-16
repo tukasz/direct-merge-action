@@ -8,12 +8,12 @@ branding:
 
 inputs:
   owner: # owner of the repo
-    description: 'Owner of the repo'
-    required: true
+    description: 'Owner of the repo. Defaults to current repository owner'
+    required: false
 
   repo: # name of the repo
-    description: 'Name of the repo'
-    required: true
+    description: 'Name of the repo. Defaults to current repository'
+    required: false
 
   source-branch: # name of source branch
     description: 'Name of the source branch (from)'
