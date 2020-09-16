@@ -1,4 +1,4 @@
-![GitHub package.json version](https://img.shields.io/github/package-json/v/tukasz/direct-merge-action)
+phips28/gh-action-bump-version![GitHub package.json version](https://img.shields.io/github/package-json/v/tukasz/direct-merge-action)
 [![codecov](https://codecov.io/gh/tukasz/direct-merge-action/branch/master/graph/badge.svg)](https://codecov.io/gh/tukasz/direct-merge-action)
 ![GitHub](https://img.shields.io/github/license/tukasz/direct-merge-action)
 
@@ -11,8 +11,8 @@ A GitHub action which directly merges one branch into another (without a PR) in 
 
 Action expects 4 arguments:
 * `GITHUB_TOKEN` - standard token taken from: `secrets.GITHUB_TOKEN`
-* `owner` - owner of the repository
-* `repo` - name of the repository
+* `owner` - owner of the repository (optional, uses owner of current repository as default)
+* `repo` - name of the repository (optional, uses current repository as default)
 * `source-branch` - branch to merge from
 * `target-branch` - branch to merge to
 
