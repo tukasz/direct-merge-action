@@ -1,4 +1,4 @@
-phips28/gh-action-bump-version![GitHub package.json version](https://img.shields.io/github/package-json/v/tukasz/direct-merge-action)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/tukasz/direct-merge-action)
 [![codecov](https://codecov.io/gh/tukasz/direct-merge-action/branch/master/graph/badge.svg)](https://codecov.io/gh/tukasz/direct-merge-action)
 ![GitHub](https://img.shields.io/github/license/tukasz/direct-merge-action)
 
