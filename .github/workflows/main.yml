@@ -34,14 +34,10 @@ jobs:
 
       - name: 'Automated Version Bump'
         uses: 'phips28/gh-action-bump-version@master'
-        with:
-          tag-prefix: 'deploy-'
 
       - name: Merge master -> develop
         uses: tukasz/direct-merge-action@master
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          owner: tukasz
-          repo: direct-merge-action
           source-branch: master
           target-branch: develop
