@@ -142,12 +142,12 @@ describe('run', () => {
       return `__${key}__`;
     });
 
-    process.env.GITHUB_REPOSITORY = 'xyz';
+    process.env.GITHUB_REPOSITORY = '';
 
     run();
 
     expect(setFailedMock).toHaveBeenCalledWith(
-      'Repository name was not specified and could not be derived from GITHUB_REPOSITORY env variable (xyz)'
+      'Repository name was not specified and could not be derived from GITHUB_REPOSITORY env variable ()'
     );
 
     expect(octokitMock.repos.merge).not.toHaveBeenCalled();
