@@ -9,7 +9,7 @@ A GitHub action which directly merges one branch into another (without a PR) in 
 ## Usage
 
 
-Action expects 4 arguments:
+Action expects up to 5 arguments:
 * `GITHUB_TOKEN` - standard token taken from: `secrets.GITHUB_TOKEN`
 * `owner` - owner of the repository (optional, uses owner of current repository as default)
 * `repo` - name of the repository (optional, uses current repository as default)
