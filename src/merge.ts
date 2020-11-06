@@ -46,7 +46,7 @@ async function merge(): Promise<void> {
   if (res) {
     switch (res.status) {
       case 201:
-        info(`Merged ${head} -> ${base} (${(res as OctokitResponse<ReposMergeResponseData>).data?.sha})`);
+        info(`Merged ${head} -> ${base} (${(res as OctokitResponse<ReposMergeResponseData>).data?.sha || ''})`);
 
         break;
 
@@ -56,12 +56,12 @@ async function merge(): Promise<void> {
         break;
 
       case 409:
-        setFailed(`Merge conflict. ${(res as OctokitResponse<ReposMergeResponse409Data>).data?.message}`);
+        setFailed(`Merge conflict. ${(res as OctokitResponse<ReposMergeResponse409Data>).data?.message || ''}`);
 
         break;
 
       case 404:
-        setFailed(`Branch not found. ${(res as OctokitResponse<ReposMergeResponse404Data>).data?.message}`);
+        setFailed(`Branch not found. ${(res as OctokitResponse<ReposMergeResponse404Data>).data?.message || ''}`);
 
         break;
 

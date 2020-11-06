@@ -35,12 +35,19 @@ describe('run', () => {
     expect(loggerMock.info).toHaveBeenCalledWith('Merged __source-branch__ -> __target-branch__ (1234)');
   });
 
+  it('should work for 201 status in case of empty/nullish data', async () => {
+    octokitMock.repos.merge.mockReturnValueOnce({
+      status: 201,
+    });
+
+    await run();
+
+    expect(loggerMock.info).toHaveBeenCalledWith('Merged __source-branch__ -> __target-branch__ ()');
+  });
+
   it('should log an info if there is nothing to merge', async () => {
     octokitMock.repos.merge.mockReturnValueOnce({
       status: 204,
-      data: {
-        sha: '1234',
-      },
     });
 
     await run();
@@ -63,6 +70,16 @@ describe('run', () => {
     expect(setFailedMock).toHaveBeenCalledWith('Merge conflict. A message XYZ');
   });
 
+  it('should work for 409 status in case of empty/nullish data', async () => {
+    octokitMock.repos.merge.mockReturnValueOnce({
+      status: 409,
+    });
+
+    await run();
+
+    expect(setFailedMock).toHaveBeenCalledWith('Merge conflict. ');
+  });
+
   it('should fail if non-existing branch was specified', async () => {
     octokitMock.repos.merge.mockReturnValueOnce({
       status: 404,
@@ -74,6 +91,16 @@ describe('run', () => {
     await run();
 
     expect(setFailedMock).toHaveBeenCalledWith('Branch not found. A message ABC');
+  });
+
+  it('should work for 404 status in case of empty/nullish data', async () => {
+    octokitMock.repos.merge.mockReturnValueOnce({
+      status: 404,
+    });
+
+    await run();
+
+    expect(setFailedMock).toHaveBeenCalledWith('Branch not found. ');
   });
 
   it('should fail the action in case of an error during merge', async () => {
