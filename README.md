@@ -9,12 +9,13 @@ A GitHub action which directly merges one branch into another (without a PR) in 
 ## Usage
 
 
-Action expects up to 5 arguments:
-* `GITHUB_TOKEN` - standard token taken from: `secrets.GITHUB_TOKEN`
-* `owner` - owner of the repository (optional, uses owner of current repository as default)
-* `repo` - name of the repository (optional, uses current repository as default)
-* `source-branch` - branch to merge from
-* `target-branch` - branch to merge to
+Action expects up to 6 arguments:
+* `GITHUB_TOKEN` - standard token taken from: `secrets.GITHUB_TOKEN` - required
+* `source-branch` - branch to merge from - required
+* `target-branch` - branch to merge to - required
+* `owner` - owner of the repository - optional, uses owner of current repository as default
+* `repo` - name of the repository - optional, uses current repository as default
+* `commit-message` - message to use for the commit - optional, uses "Automatic merge of \<source-branch\> -> \<target-branch\>" as default
 
 ### Example:
 
