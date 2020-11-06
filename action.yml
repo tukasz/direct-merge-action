@@ -23,8 +23,12 @@ inputs:
     description: 'Name of the target branch (to)'
     required: true
 
+  commit-message: # commit message
+    description: 'Message to use for the commit. If empty then a default message will be used ("Automatic merge of <source-branch> -> <target-branch>")'
+    required: false
+
   GITHUB_TOKEN:
-    description: 'Pass in secrets.GITHUB_TOKEN'
+    description: 'Repository access token. For example: ${{ secrets.GITHUB_TOKEN }}'
     required: true
 
 runs:
